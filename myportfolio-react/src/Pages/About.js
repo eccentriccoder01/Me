@@ -7,11 +7,11 @@ const About = () => {
     <div className="about-content">
         <img src="Logos/profile-image.jpg" alt="Sagnik Chakraborty"/>
         <div className="social-media">
-            <a href="https://github.com/eccentriccoder01" target="_blank" rel="noreferrer"><img src="Logos/github.png" alt="GitHub"/></a>
-            <a href="http://www.linkedin.com/in/sagnik-chakraborty-9aa473248" target="_blank" rel="noreferrer"><img src="Logos/linkedin.png" alt="LinkedIn"/></a>
-            <a href="https://www.instagram.com/mr.eccen.tric/" target="_blank" rel="noreferrer"><img src="Logos/instagram.png" alt="Instagram"/></a>
-            <a href="https://pin.it/7ewYiFJ" target="_blank" rel="noreferrer"><img src="Logos/pinterest.png" alt="Pinterest"/></a>
-            <a href="https://twitter.com/Mr_Eccen_tric" target="_blank" rel="noreferrer"><img src="Logos//twitter.png" alt="Twitter"/></a>
+            <a href="https://github.com/eccentriccoder01" target="_blank" rel="noreferrer"><img src="./Logos/github.png" alt="GitHub"/></a>
+            <a href="http://www.linkedin.com/in/sagnik-chakraborty-9aa473248" target="_blank" rel="noreferrer"><img src="./Logos/linkedin.png" alt="LinkedIn"/></a>
+            <a href="https://www.instagram.com/mr.eccen.tric/" target="_blank" rel="noreferrer"><img src="./Logos/instagram.png" alt="Instagram"/></a>
+            <a href="https://pin.it/7ewYiFJ" target="_blank" rel="noreferrer"><img src="./Logos/pinterest.png" alt="Pinterest"/></a>
+            <a href="https://twitter.com/Mr_Eccen_tric" target="_blank" rel="noreferrer"><img src="./Logos/twitter.png" alt="Twitter"/></a>
         </div>
         <div className="buttons">
             <button id="contact-button"><a href="#contact">Contact Me</a></button>
