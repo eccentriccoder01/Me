@@ -1,5 +1,5 @@
-body {font-family: Arial, sans-serif;margin: 0;padding: 0;background-image: url('background.jpg');background-size: cover;background-repeat: no-repeat;background-position: center;width: 1024px;overflow-x: auto;}
-.container {width: 1024px;margin: 0 auto;}
+body {font-family: Arial, sans-serif;margin: 0;padding: 0;background-image: url('background.jpg');background-size: cover;background-repeat: no-repeat;background-position: center;width: 1424px;overflow-x: auto;}
+.container {width: 1424px;margin: 0 auto;}
 .nav-buttons {position: absolute;top: 10px;right: 20px;}
 .nav-buttons ul {list-style-type: none;padding: 0;}
 .nav-buttons li {display: inline-block;margin-right: 15px;}
@@ -20,9 +20,8 @@ header p {font-size: 18px;}
 .social-media img {width: 30px;height: 30px;margin-bottom: 20px;}
 button {background-color: #edd312;color: white;border: none;border-radius: 5px;padding: 10px 20px;cursor: pointer;transition: background-color 0.3s;margin: 5px;}
 button:hover {background-color: #FFFFFF;}
-#experience {background-color: #000000;display: flex;flex-wrap: wrap;gap: 20px;}
-.experience-card {flex: 1;display: flex;background-color: #fff;border-radius: 10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);overflow: hidden;}
-.experience-logo img {max-width: 60px;height: auto;margin-right: 20px;}
+#experience {display: flex;flex-wrap: wrap;gap: 20px;}
+.experience-card {display: flex;flex-direction: column;background-color: #fff;border-radius: 10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);padding: 20px;width: calc(20%);box-sizing: border-box;}.experience-logo img {max-width: 60px;height: auto;margin-right: 20px;}
 .experience-description {padding: 20px;flex: 2;}
 #contact:hover {background-color: lightblue;transform: scale(1.05);box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);}
 .education-card:hover {background-color: lightgreen;transform: scale(1.05);box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);}
@@ -35,7 +34,7 @@ button:hover {background-color: #FFFFFF;}
 .thumbnail {background-color: #000;color: #fff;border-radius: 5px;padding: 5px 10px;margin: 5px;}
 .thumbnail:hover {background-color: #1250ed;}
 #experience, #skills, #certifications, #education, #contact, #projects {background-color: rgba(255, 255, 255, 0.9);padding: 20px;border-radius: 10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);margin-top: 20px;}
-#experience h2, #skills h2, #certifications h2, #education h2, #contact h2, #projects h2 {font-family: cursive;color: #3f0773;font-size: 28px;margin-bottom: 20px;text-align: center;}
+#experience h2, #skills h2, #certifications h2, #education h2, #contact h2, #projects h2 {font-family: "Comic Sans MS";color: #3f0773;font-size: 28px;margin-bottom: 20px;text-align: center;}
 #projects {display: flex;flex-wrap: wrap;justify-content: space-between;gap: 20px;}
 .project-card {display: flex;flex-direction: column;background-color: #fff;border-radius: 10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);padding: 20px;width: calc(50% - 15px);box-sizing: border-box;}
 .project-img img {max-width: 180px;height: auto;margin-right: 10px;}
