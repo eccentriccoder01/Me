@@ -580,10 +580,9 @@ span {
 }
 
 .skill-card {
-    background-color: #3a034e;
-    border-radius: 1rem;
-    padding: 2rem;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
+    padding: 1.5rem;
+    border: .2rem solid var(--main-color);
+    border-radius: .6rem;
     flex: 1 1 250px; /* was 30rem (480px) */
     max-width: 350px; /* slightly smaller */
     min-width: 200px;
@@ -633,6 +632,107 @@ span {
         padding: 6px 10px;
     }
 }  
+
+/* portfolio section starts */
+#myBtnContainer {
+    margin-bottom: 45px;
+    text-align: center;
+}
+
+#myBtnContainer button {
+    border: none;
+    color: #fff;
+    background: transparent;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 15px;
+    padding: 8px 16px;
+    transition: color 0.3s ease;
+}
+
+#myBtnContainer button:hover {
+    color: #fca61f;
+}
+
+#myBtnContainer button:focus {
+    outline: none;
+}
+
+.portfolio-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.post {
+    width: 100%;
+    max-width: 320px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.post:hover {
+    transform: translateY(-5px);
+}
+
+.post .card {
+    border: none;
+}
+
+.post img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 1rem;
+}
+
+.post .content h4,
+.card-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.card-body .badge {
+    margin: 3px 5px;
+    font-size: 0.75rem;
+}
+
+.card-body .link {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #fca61f;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.card-body .link:hover {
+    text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+    .post {
+        width: 45%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .post {
+        width: 30%;
+    }
+}
+/* portfolio section ends */
 
 .contact {
     min-height: auto;
@@ -813,6 +913,7 @@ section:nth-child(odd) .animate.scroll,
 .education.show-animate .animate.scroll,
 .skills.show-animate .animate.scroll,
 .contact.show-animate .animate.scroll,
+.portfolio.show-animate .animate.scroll,
 .footer.show-animate .animate.scroll {
     transition-delay: calc(.3s * var(--i));
     width: 0;
