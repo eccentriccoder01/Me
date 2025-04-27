@@ -47,3 +47,23 @@ window.onscroll = () => {
 
     footer.classList.toggle('show-animate', this.innerHeight + this.scrollY >= document.scrollingElement.scrollHeight);
 }
+
+const filterButtons = document.querySelectorAll('.filter-item');
+const posts = document.querySelectorAll('.post');
+
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const filter = button.getAttribute('data-filter');
+
+        posts.forEach(post => {
+            if (filter === 'all' || post.classList.contains(filter)) {
+                post.style.display = 'block';
+            } else {
+                post.style.display = 'none';
+            }
+        });
+
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+    });
+});
