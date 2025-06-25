@@ -90,6 +90,8 @@ section {
     background: url('images/home.jpg') no-repeat;
     background-size: cover;
     background-position: center;
+    position: relative;
+    z-index: 5;
 }
 
 .home-content {
@@ -215,6 +217,7 @@ section {
 
 .home-sci {
     position: absolute;
+    z-index: 6;
     bottom: 4rem;
     width: 300px;
     display: flex;
@@ -281,6 +284,10 @@ section {
     gap: 2rem;
     background: var(--second-bg-color);
     padding-bottom: 6rem;
+    position: relative;
+    z-index: 99;
+    overflow: visible !important; /* Ensure nothing is clipped */
+    min-height: 100vh; /* Ensure full height */
 }
 
 .heading {
@@ -327,6 +334,7 @@ span {
 
 .about-content {
     text-align: center;
+    position: relative;
 }
 
 .about-content h3 {
@@ -350,6 +358,59 @@ span {
     background: var(--second-bg-color);
 }
 
+.about-sci {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.about-sci a {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: .2rem solid var(--main-color);
+    border-radius: 50%;
+    font-size: 20px;
+    color: var(--main-color);
+    z-index: 1;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.about-sci a:hover {
+    color: var(--bg-color);
+}
+
+.about-sci a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--main-color);
+    z-index: -1;
+    transition: .5s;
+}
+
+.about-sci a:hover::before {
+    width: 100%;
+}
+
+.about-sci-logo {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 .education {
     display: flex;
     justify-content: center;
@@ -361,13 +422,13 @@ span {
 
 .education .education-row {
     display: flex;
-    flex-wrap: wrap;
     gap: 5rem;
+    flex-wrap: nowrap;
 }
 
-.education-row .education-column {
+/* .education-row .education-column {
     flex: 1 1 40rem;
-}
+} */
 
 .education-column .title {
     position: relative;
@@ -381,12 +442,34 @@ span {
     border-left: .2rem solid var(--main-color);
 }
 
+/* .edu-title {
+    display: flex;
+    gap: 1rem;
+    margin-top: .5rem;
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+.edu-logo {
+    height: 25px;
+    width: auto;
+    object-fit: contain;
+} */
+
+.edu-col {
+    flex: 0 0 25%;
+}
+
+.exp-col {
+    flex: 0 0 37.5%;
+}
+
 .education-box .education-content {
     position: relative;
     padding-left: 2rem;
 }
 
-.education-box .education-content::before {
+/* .education-box .education-content::before {
     content: '';
     position: absolute;
     top: 0;
@@ -395,7 +478,26 @@ span {
     height: 2rem;
     background: var(--main-color);
     border-radius: 50%;
+} */
+
+.timeline-logo {
+    position: absolute;
+    top: 0;
+    left: -4rem; /* adjust based on your layout */
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: white; /* optional fallback */
+    z-index: 1;
 }
+
+.timeline-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 
 .education-content .content {
     position: relative;
@@ -423,7 +525,7 @@ span {
 }
 
 .education-content .content .year {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: var(--main-color);
     padding-bottom: .5rem;
 }
@@ -436,8 +538,14 @@ span {
     font-size: 2rem;
 }
 
-.education-content .content p {
+.education-content .content h6 {
     font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--main-color);
+}
+
+.education-content .content p {
+    font-size: 1.4rem;
     padding-top: .5rem;
 }
 
@@ -579,6 +687,28 @@ span {
     margin-top: 2rem;
 }
 
+.badge-gallery {
+    margin-top: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.badge-gallery img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 8px;
+    border: 2px solid var(--main-color);
+    padding: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.badge-gallery img:hover {
+    transform: scale(1.4);
+}
+
 .skill-card {
     padding: 1.5rem;
     border: .2rem solid var(--main-color);
@@ -631,9 +761,207 @@ span {
         font-size: 1rem;
         padding: 6px 10px;
     }
-}  
+} 
+
+/* Certifications Section */
+.certifications-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: auto;
+    padding-bottom: 5rem;
+    background: var(--bg-color); /* Different background than education section */
+    isolation: isolate;  /* NEW: prevent z-index spillover */
+    z-index: 0;
+}
+
+.certifications-container {
+    display: grid; /* Use grid for a card-like layout */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+    gap: 3rem; /* Space between cards */
+    width: 100%;
+    max-width: 2700px;
+    padding: 0 0;
+}
+
+.certification-card {
+    position: relative;
+    background: var(--bg-color); /* Card background */
+    border: .2rem solid var(--main-color);
+    border-radius: .8rem;
+    padding: 2rem;
+    text-align: left;
+    overflow: hidden;
+    transition: .5s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.certification-card:hover {
+    transform: translateY(-1rem); /* Lift effect on hover */
+    box-shadow: 0 0 2rem var(--main-color); /* Glow effect on hover */
+}
+
+.certification-card .year {
+    font-size: 1.4rem;
+    color: var(--main-color);
+    margin-bottom: .5rem;
+}
+
+.certification-card .year i {
+    padding-right: .5rem;
+}
+
+.certification-card h3 {
+    font-size: 2.2rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.certification-card .cert-provider,
+.certification-card .cert-link {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin-top: .5rem;
+}
+
+.certification-card .cert-link a {
+    color: var(--main-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.certification-card .cert-link a:hover {
+    text-decoration: underline;
+}
+
+.hidden-cert {
+    display: none !important;
+}
+
+.load-more-container {
+    margin-top: 4rem;
+    text-align: center;
+    width: 100%;
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* so they wrap on small screens */
+    gap: 1.5rem; /* ✅ add spacing between buttons */
+}
+
+.load-more-container .btn {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 15rem; /* Increased width */
+    height: 5rem;
+    background: var(--main-color);
+    border: .2rem solid var(--main-color);
+    border-radius: .8rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    color: var(--bg-color);
+    z-index: 1;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.load-more-container .btn:hover {
+    color: var(--main-color);
+    background: transparent;
+}
+
+.load-more-container .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--bg-color);
+    z-index: -1;
+    transition: .5s;
+}
+
+.load-more-container .btn:hover::before {
+    width: 100%;
+}
+
+/* Inverse button default */
+.load-more-container .inverse-btn {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 15rem;
+    height: 5rem;
+    background: var(--bg-color); /* light background by default */
+    border: .2rem solid var(--main-color);
+    border-radius: .8rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    color: var(--main-color); /* main-color text */
+    z-index: 1;
+    overflow: hidden;
+    transition: .5s;
+}
+
+/* Hover: text becomes bg-color, background fills in with main-color */
+.load-more-container .inverse-btn:hover {
+    color: var(--bg-color);
+}
+
+/* Animated fill from ::before */
+.load-more-container .inverse-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--main-color);
+    z-index: -1;
+    transition: .5s;
+}
+
+.load-more-container .inverse-btn:hover::before {
+    width: 100%;
+}
+
+.cert-provider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: .5rem;
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+.cert-logo {
+    height: 20px;
+    width: auto;
+    object-fit: contain;
+}
+
+@media (max-width: 768px) {
+    .certifications-container {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+        padding: 0 5%;
+    }
+}
 
 /* portfolio section starts */
+.portfolio {
+    padding-bottom: 7rem;
+    background: var(--second-bg-color);
+}
+
 #myBtnContainer {
     margin-bottom: 45px;
     text-align: center;
@@ -653,17 +981,25 @@ span {
 }
 
 #myBtnContainer button:hover {
-    color: #fca61f;
+    color: var(--main-color);
 }
 
 #myBtnContainer button:focus {
     outline: none;
 }
 
+.project-box {
+    position: relative;
+    width: 100%;
+    display: flex;            /* 🔥 add this */
+    flex-wrap: wrap;          /* allow rows */
+    justify-content: center;  /* or space-between */
+    gap: 2rem;                /* spacing between cards */
+}
+
 .portfolio-body {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
     gap: 2rem;
     margin-top: 2rem;
 }
@@ -671,11 +1007,14 @@ span {
 .post {
     width: 100%;
     max-width: 320px;
-    background: #fff;
+    background: transparent;
+    border: .2rem solid var(--main-color);
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
 
 .post:hover {
@@ -694,32 +1033,45 @@ span {
 
 .card-body {
     padding: 1rem;
+    text-align: center;
 }
 
 .post .content h4,
 .card-title {
-    font-size: 1.2rem;
+    font-size: 2rem;
     font-weight: 700;
     margin-bottom: 10px;
+    text-align: center;
+    color: var(--main-color);
 }
 
 .card-body .badge {
-    margin: 3px 5px;
-    font-size: 0.75rem;
+    margin: 3px 2px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    color: white;
 }
 
 .card-body .link {
-    display: inline-block;
+    display: inline-block; /* allows margin and respects center */
     margin-top: 10px;
-    font-size: 0.9rem;
-    color: #fca61f;
+    font-size: 1.3rem;
+    color: white;
     text-decoration: none;
     font-weight: 600;
+    border: .2rem solid var(--main-color);
+    padding: 0.4rem 1.2rem;
+    border-radius: 5px;
+    text-align: center;
+    transition: 0.3s ease;
 }
 
+/* Optional: Hover style */
 .card-body .link:hover {
     text-decoration: underline;
 }
+
 
 @media (min-width: 768px) {
     .post {
@@ -889,7 +1241,8 @@ span {
 .logo .animate,
 .navbar .animate,
 #menu-icon .animate,
-.home.show-animate .animate {
+.home.show-animate .animate,
+.certifications-section .load-more-container .animate {
     animation: showRight 1s ease forwards;
     animation-delay: calc(.3s * var(--i));
 }
@@ -914,6 +1267,7 @@ section:nth-child(odd) .animate.scroll,
 .skills.show-animate .animate.scroll,
 .contact.show-animate .animate.scroll,
 .portfolio.show-animate .animate.scroll,
+.certifications-section.show-animate .animate.scroll,
 .footer.show-animate .animate.scroll {
     transition-delay: calc(.3s * var(--i));
     width: 0;
@@ -1037,11 +1391,13 @@ section:nth-child(odd) .animate.scroll,
         flex-direction: column;
     }
 
-    .home-sci {
+    .home-sci,
+    .about-sci {
         width: 160px;
     }
 
-    .home-sci a {
+    .home-sci a,
+    .about-sci a {
         width: 38px;
         height: 38px;
     }
