@@ -1198,8 +1198,12 @@ span {
 }
 /* portfolio section ends */
 
+
 .contact {
-    min-height: auto;
+    min-height: 100vh;
+    padding: 8rem 5% 4rem;
+    position: relative;
+    z-index: 5;
     padding-bottom: 7rem;
 }
 
