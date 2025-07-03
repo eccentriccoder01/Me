@@ -757,6 +757,22 @@ span {
     transform: scale(1.4);
 }
 
+.badge-item {
+    position: relative;
+    display: inline-block;
+}
+
+.badge-icon {
+    position: absolute;
+    top: -22px;
+    left: -25px;
+    font-size: 4rem;
+    background-color: transparent;
+    padding: 2px 5px;
+    border-radius: 50%;
+    z-index: 2;
+}
+
 /* Animation fixes for skills section */
 .skills .animate.scroll {
     position: absolute;
@@ -1118,7 +1134,7 @@ span {
 
 .post {
     width: 100%;
-    max-width: 320px;
+    min-width: 320px;
     background: transparent;
     border: .2rem solid var(--main-color);
     border-radius: 12px;
@@ -1127,6 +1143,7 @@ span {
     transition: transform 0.3s ease;
     display: flex;
     flex-direction: column;
+    min-height: 350px;
 }
 
 .post:hover {
@@ -1196,6 +1213,56 @@ span {
         width: 30%;
     }
 }
+
+.project-container {
+    width: 100%;
+    max-width: 320px;
+    background: transparent;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.post:hover {
+    transform: translateY(-5px);
+}
+
+.hover-note {
+  position: absolute;
+  top: -40px;
+  transform: translateY(10px);
+  background-color: var(--main-color);
+  color: var(--bg-color);
+  font-size: 1.2rem;
+  padding: 6px 12px;
+  border-radius: 8px;
+  max-width: 300px; 
+  white-space: normal; 
+  opacity: 0;
+  transition: 0.3s ease;
+  pointer-events: none;
+  font-weight: 500;
+  z-index: 5;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.project-container:hover .hover-note {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hover-note::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: var(--main-color) transparent transparent transparent;
+}
+
 /* portfolio section ends */
 
 
