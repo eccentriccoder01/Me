@@ -12,10 +12,10 @@
 }
 
 :root {
-    --bg-color: #081b29;
-    --second-bg-color: #112e42;
+    --bg-color: #250902;
+    --second-bg-color: #38040E;
     --text-color: #ededed;
-    --main-color: #00abf0;
+    --main-color: #AD2831;
 }
 
 html {
@@ -668,6 +668,7 @@ span {
     width: 60%;
 } */
 
+/* Skills Section - Fixed Animation */
 .skills {
     padding-bottom: 7rem;
     background: var(--second-bg-color);
@@ -687,12 +688,78 @@ span {
     margin-top: 2rem;
 }
 
+.skill-card {
+    padding: 1.5rem;
+    border: .2rem solid var(--main-color);
+    border-radius: .6rem;
+    flex: 1 1 250px;
+    max-width: 350px;
+    min-width: 200px;
+    position: relative;
+    overflow: visible; /* Changed to visible to allow overlay outside */
+    min-height: 100px;
+    z-index: 1;
+}
+
+.skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--bg-color);
+    z-index: -1;
+    transition: .5s;
+}
+
+.skill-card:hover::before {
+    width: 100%;
+}
+
+.skill-category {
+    margin-bottom: 10px;
+    color: #333;
+    min-height: 100px;
+    position: relative;
+    z-index: 2;
+}
+
+.skill-category h6 {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.thumbnail-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.thumbnail {
+    background-color: #000;
+    color: #fff;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.thumbnail:hover {
+    background-color: var(--main-color);
+}
+
+/* Badge Gallery */
 .badge-gallery {
     margin-top: 3rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
+    position: relative;
+    z-index: 1;
 }
 
 .badge-gallery img {
@@ -709,47 +776,64 @@ span {
     transform: scale(1.4);
 }
 
-.skill-card {
-    padding: 1.5rem;
-    border: .2rem solid var(--main-color);
-    border-radius: .6rem;
-    flex: 1 1 250px; /* was 30rem (480px) */
-    max-width: 350px; /* slightly smaller */
-    min-width: 200px;
-    position: relative;
-    overflow: hidden;
-    min-height: 100px;
-}
-  
-  .skill-category {
-    margin-bottom: 10px;
-    color: #333;
-    min-height: 100px;
-  }
-  
-  .skill-category h6 {
-    color: white;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .thumbnail-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px; /* replace margin with proper gap */
+/* Animation fixes for skills section */
+.skills .animate.scroll {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--second-bg-color);
+    z-index: 98;
+    transition: 1s ease;
+    transition-delay: calc(.3s * var(--i));
 }
 
-.thumbnail {
-    background-color: #000;
-    color: #fff;
-    border-radius: 5px;
-    padding: 8px 12px;
-    font-size: 1.2rem;
-    transition: background-color 0.3s ease;
-    cursor: pointer;
+.skills.show-animate .animate.scroll {
+    width: 0;
+    transition-delay: calc(.3s * var(--i));
 }
-.thumbnail:hover {
-    background-color: #1250ed;
+
+/* COMPLETELY REWRITTEN: Skill card animation - wrap the entire card including borders */
+.skill-card .animate.scroll {
+    background: var(--second-bg-color);
+    border-radius: calc(.6rem + .2rem); /* Slightly larger radius to cover border radius */
+    top: -.2rem; /* Position outside the border */
+    right: -.2rem; /* Position outside the border */
+    width: calc(100% + .4rem); /* Cover both left and right borders */
+    height: calc(100% + .4rem); /* Cover both top and bottom borders */
+    z-index: 100; /* Ensure it's above everything */
+    border: none; /* Remove any border from the overlay */
+}
+
+/* Badge gallery animation */
+.badge-gallery .animate.scroll {
+    background: var(--second-bg-color);
+}
+
+/* Alternative approach - create a wrapper for each skill card */
+.skill-card-wrapper {
+    position: relative;
+    border-radius: .6rem;
+    overflow: hidden;
+}
+
+.skill-card-wrapper .animate.scroll {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--second-bg-color);
+    z-index: 100;
+    transition: 1s ease;
+    transition-delay: calc(.3s * var(--i));
+    border-radius: .6rem;
+}
+
+.skills.show-animate .skill-card-wrapper .animate.scroll {
+    width: 0;
+    transition-delay: calc(.3s * var(--i));
 }
 
 @media (max-width: 768px) {
@@ -761,7 +845,7 @@ span {
         font-size: 1rem;
         padding: 6px 10px;
     }
-} 
+}
 
 /* Certifications Section */
 .certifications-section {
@@ -771,15 +855,15 @@ span {
     flex-direction: column;
     min-height: auto;
     padding-bottom: 5rem;
-    background: var(--bg-color); /* Different background than education section */
-    isolation: isolate;  /* NEW: prevent z-index spillover */
+    background: var(--bg-color);
+    isolation: isolate;
     z-index: 0;
 }
 
 .certifications-container {
-    display: grid; /* Use grid for a card-like layout */
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
-    gap: 3rem; /* Space between cards */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
     width: 100%;
     max-width: 2700px;
     padding: 0 0;
@@ -787,12 +871,12 @@ span {
 
 .certification-card {
     position: relative;
-    background: var(--bg-color); /* Card background */
+    background: var(--bg-color);
     border: .2rem solid var(--main-color);
     border-radius: .8rem;
     padding: 2rem;
     text-align: left;
-    overflow: hidden;
+    overflow: visible; /* Changed to visible to allow overlay outside */
     transition: .5s ease;
     display: flex;
     flex-direction: column;
@@ -800,8 +884,8 @@ span {
 }
 
 .certification-card:hover {
-    transform: translateY(-1rem); /* Lift effect on hover */
-    box-shadow: 0 0 2rem var(--main-color); /* Glow effect on hover */
+    transform: translateY(-1rem);
+    box-shadow: 0 0 2rem var(--main-color);
 }
 
 .certification-card .year {
@@ -848,8 +932,9 @@ span {
     grid-column: 1 / -1;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* so they wrap on small screens */
-    gap: 1.5rem; /* ✅ add spacing between buttons */
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    position: relative; /* Added for animation positioning */
 }
 
 .load-more-container .btn {
@@ -857,7 +942,7 @@ span {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 15rem; /* Increased width */
+    width: 15rem;
     height: 5rem;
     background: var(--main-color);
     border: .2rem solid var(--main-color);
@@ -892,7 +977,6 @@ span {
     width: 100%;
 }
 
-/* Inverse button default */
 .load-more-container .inverse-btn {
     position: relative;
     display: inline-flex;
@@ -900,24 +984,22 @@ span {
     align-items: center;
     width: 15rem;
     height: 5rem;
-    background: var(--bg-color); /* light background by default */
+    background: var(--bg-color);
     border: .2rem solid var(--main-color);
     border-radius: .8rem;
     font-size: 1.8rem;
     font-weight: 600;
     letter-spacing: .1rem;
-    color: var(--main-color); /* main-color text */
+    color: var(--main-color);
     z-index: 1;
     overflow: hidden;
     transition: .5s;
 }
 
-/* Hover: text becomes bg-color, background fills in with main-color */
 .load-more-container .inverse-btn:hover {
     color: var(--bg-color);
 }
 
-/* Animated fill from ::before */
 .load-more-container .inverse-btn::before {
     content: '';
     position: absolute;
@@ -949,9 +1031,49 @@ span {
     object-fit: contain;
 }
 
+/* ANIMATION FIXES FOR CERTIFICATIONS SECTION */
+.certifications-section .animate.scroll {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);
+    z-index: 98;
+    transition: 1s ease;
+    transition-delay: calc(.3s * var(--i));
+}
+
+.certifications-section.show-animate .animate.scroll {
+    width: 0;
+    transition-delay: calc(.3s * var(--i));
+}
+
+/* FIXED: Certification card animation - cover borders */
+.certification-card .animate.scroll {
+    background: var(--bg-color);
+    border-radius: calc(.8rem + .2rem); /* Slightly larger radius to cover border */
+    top: -.2rem; /* Position outside the border */
+    right: -.2rem; /* Position outside the border */
+    width: calc(100% + .4rem); /* Cover both left and right borders */
+    height: calc(100% + .4rem); /* Cover both top and bottom borders */
+    z-index: 100; /* Ensure it's above everything */
+}
+
+/* FIXED: Load more container animation - cover the entire container */
+.load-more-container .animate.scroll {
+    background: var(--bg-color);
+    border-radius: .8rem;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99; /* Above buttons but below other overlays */
+}
+
 @media (max-width: 768px) {
     .certifications-container {
-        grid-template-columns: 1fr; /* Single column on smaller screens */
+        grid-template-columns: 1fr;
         padding: 0 5%;
     }
 }
@@ -988,13 +1110,22 @@ span {
     outline: none;
 }
 
+.myBtnBox {
+    position: relative;
+    width: 100%;
+    display: flex;         
+    flex-wrap: wrap;        
+    justify-content: center; 
+    gap: 2rem;               
+}
+
 .project-box {
     position: relative;
     width: 100%;
-    display: flex;            /* 🔥 add this */
-    flex-wrap: wrap;          /* allow rows */
-    justify-content: center;  /* or space-between */
-    gap: 2rem;                /* spacing between cards */
+    display: flex;         
+    flex-wrap: wrap;        
+    justify-content: center; 
+    gap: 2rem;               
 }
 
 .portfolio-body {
@@ -1027,7 +1158,7 @@ span {
 
 .post img {
     width: 100%;
-    height: 220px;
+    height: 180px;
     object-fit: cover;
 }
 
