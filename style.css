@@ -26,6 +26,7 @@ html {
 body {
     background: var(--bg-color);
     color: var(--text-color);
+    overflow-x: hidden;
 }
 
 .header {
@@ -80,7 +81,8 @@ body {
 
 section {
     min-height: 100vh;
-    padding: 10rem 9% 2rem;
+    width: 100%;
+    padding: 10rem 5% 2rem;
 }
 
 .home {
@@ -92,6 +94,13 @@ section {
     background-position: center;
     position: relative;
     z-index: 5;
+}
+
+.home-content,
+.about-content,
+.education-content {
+    max-width: 100%;
+    width: 100%;
 }
 
 .home-content {
@@ -423,12 +432,9 @@ span {
 .education .education-row {
     display: flex;
     gap: 5rem;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+        justify-content: center;
 }
-
-/* .education-row .education-column {
-    flex: 1 1 40rem;
-} */
 
 .education-column .title {
     position: relative;
@@ -442,26 +448,12 @@ span {
     border-left: .2rem solid var(--main-color);
 }
 
-/* .edu-title {
-    display: flex;
-    gap: 1rem;
-    margin-top: .5rem;
-    font-size: 1.5rem;
-    color: var(--text-color);
-}
-
-.edu-logo {
-    height: 25px;
-    width: auto;
-    object-fit: contain;
-} */
-
 .edu-col {
-    flex: 0 0 25%;
+    flex: 0 0 100%;
 }
 
 .exp-col {
-    flex: 0 0 37.5%;
+    flex: 0 0 45%;
 }
 
 .education-box .education-content {
@@ -469,26 +461,15 @@ span {
     padding-left: 2rem;
 }
 
-/* .education-box .education-content::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -1.1rem;
-    width: 2rem;
-    height: 2rem;
-    background: var(--main-color);
-    border-radius: 50%;
-} */
-
 .timeline-logo {
     position: absolute;
     top: 0;
-    left: -4rem; /* adjust based on your layout */
+    left: -4rem;
     width: 3.5rem;
     height: 3.5rem;
     border-radius: 50%;
     overflow: hidden;
-    background-color: white; /* optional fallback */
+    background-color: white;
     z-index: 1;
 }
 
@@ -1620,5 +1601,36 @@ section:nth-child(odd) .animate.scroll,
 @keyframes showRight {
     100% {
         width: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 50%;
+    }
+
+    .home-content h1 {
+        font-size: 3.6rem;
+    }
+
+    .home-content .text-animate h3 {
+        font-size: 2.2rem;
+    }
+
+    .heading {
+        font-size: 3.5rem;
+    }
+
+    .education .education-row {
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .home-sci {
+        position: static;
+        margin-top: 2rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
     }
 }
