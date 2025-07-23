@@ -111,7 +111,7 @@ section {
 .home-content h1 {
     position: relative;
     display: inline-block;
-    font-size: 5.12rem; /* change here */
+    font-size: 5.12rem;
     font-weight: 700;
     line-height: 1.3;
 }
@@ -126,7 +126,6 @@ section {
 }
 
 .home-content .text-animate h3 {
-    /* change here */
     font-size: 3.05rem;
     font-weight: 700;
     color: transparent;
@@ -295,8 +294,8 @@ section {
     padding-bottom: 6rem;
     position: relative;
     z-index: 99;
-    overflow: visible !important; /* Ensure nothing is clipped */
-    min-height: 100vh; /* Ensure full height */
+    overflow: visible !important;
+    min-height: 100vh;
 }
 
 .heading {
@@ -649,7 +648,7 @@ span {
     width: 60%;
 } */
 
-/* Skills Section - Fixed Animation */
+/* Skills Section */
 .skills {
     padding-bottom: 7rem;
     background: var(--second-bg-color);
@@ -677,7 +676,7 @@ span {
     max-width: 350px;
     min-width: 200px;
     position: relative;
-    overflow: visible; /* Changed to visible to allow overlay outside */
+    overflow: visible;
     min-height: 100px;
     z-index: 1;
 }
@@ -773,7 +772,6 @@ span {
     z-index: 2;
 }
 
-/* Animation fixes for skills section */
 .skills .animate.scroll {
     position: absolute;
     top: 0;
@@ -791,16 +789,15 @@ span {
     transition-delay: calc(.3s * var(--i));
 }
 
-/* COMPLETELY REWRITTEN: Skill card animation - wrap the entire card including borders */
 .skill-card .animate.scroll {
     background: var(--second-bg-color);
-    border-radius: calc(.6rem + .2rem); /* Slightly larger radius to cover border radius */
-    top: -.2rem; /* Position outside the border */
-    right: -.2rem; /* Position outside the border */
-    width: calc(100% + .4rem); /* Cover both left and right borders */
-    height: calc(100% + .4rem); /* Cover both top and bottom borders */
-    z-index: 100; /* Ensure it's above everything */
-    border: none; /* Remove any border from the overlay */
+    border-radius: calc(.6rem + .2rem);
+    top: -.2rem;
+    right: -.2rem;
+    width: calc(100% + .4rem);
+    height: calc(100% + .4rem); 
+    z-index: 100;
+    border: none;
 }
 
 /* Badge gallery animation */
@@ -808,7 +805,6 @@ span {
     background: var(--second-bg-color);
 }
 
-/* Alternative approach - create a wrapper for each skill card */
 .skill-card-wrapper {
     position: relative;
     border-radius: .6rem;
@@ -873,7 +869,7 @@ span {
     border-radius: .8rem;
     padding: 2rem;
     text-align: left;
-    overflow: visible; /* Changed to visible to allow overlay outside */
+    overflow: visible;
     transition: .5s ease;
     display: flex;
     flex-direction: column;
@@ -931,7 +927,7 @@ span {
     justify-content: center;
     flex-wrap: wrap;
     gap: 1.5rem;
-    position: relative; /* Added for animation positioning */
+    position: relative;
 }
 
 .load-more-container .btn {
@@ -1028,7 +1024,6 @@ span {
     object-fit: contain;
 }
 
-/* ANIMATION FIXES FOR CERTIFICATIONS SECTION */
 .certifications-section .animate.scroll {
     position: absolute;
     top: 0;
@@ -1046,18 +1041,16 @@ span {
     transition-delay: calc(.3s * var(--i));
 }
 
-/* FIXED: Certification card animation - cover borders */
 .certification-card .animate.scroll {
     background: var(--bg-color);
-    border-radius: calc(.8rem + .2rem); /* Slightly larger radius to cover border */
-    top: -.2rem; /* Position outside the border */
-    right: -.2rem; /* Position outside the border */
-    width: calc(100% + .4rem); /* Cover both left and right borders */
-    height: calc(100% + .4rem); /* Cover both top and bottom borders */
-    z-index: 100; /* Ensure it's above everything */
+    border-radius: calc(.8rem + .2rem);
+    top: -.2rem;
+    right: -.2rem;
+    width: calc(100% + .4rem);
+    height: calc(100% + .4rem);
+    z-index: 100;
 }
 
-/* FIXED: Load more container animation - cover the entire container */
 .load-more-container .animate.scroll {
     background: var(--bg-color);
     border-radius: .8rem;
@@ -1065,7 +1058,7 @@ span {
     right: 0;
     width: 100%;
     height: 100%;
-    z-index: 99; /* Above buttons but below other overlays */
+    z-index: 99;
 }
 
 @media (max-width: 768px) {
@@ -1183,7 +1176,7 @@ span {
 }
 
 .card-body .link {
-    display: inline-block; /* allows margin and respects center */
+    display: inline-block;
     margin-top: 10px;
     font-size: 1.3rem;
     color: white;
@@ -1196,11 +1189,9 @@ span {
     transition: 0.3s ease;
 }
 
-/* Optional: Hover style */
 .card-body .link:hover {
     text-decoration: underline;
 }
-
 
 @media (min-width: 768px) {
     .post {
@@ -1262,10 +1253,9 @@ span {
   border-style: solid;
   border-color: var(--main-color) transparent transparent transparent;
 }
-
 /* portfolio section ends */
 
-
+/* Contact Section */
 .contact {
     min-height: 100vh;
     padding: 8rem 5% 4rem;
@@ -1406,7 +1396,6 @@ span {
     color: var(--main-color);
 }
 
-/* ANIMATION RELOAD AND SCROLL */
 .animate {
     position: absolute;
     top: 0;
@@ -1456,7 +1445,7 @@ section:nth-child(odd) .animate.scroll,
     width: 0;
 }
 
-::-moz-selection { /* Code for Firefox */
+::-moz-selection { 
     color: var(--second-bg-color);
     background: var(--main-color);
   }
