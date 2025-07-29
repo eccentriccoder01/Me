@@ -32,9 +32,9 @@ Experience it live here: [**Me**](https://eccentriccoder01.github.io/Me)
 
 ## 📺 Video Explanation
 
-For a detailed walkthrough of my portfolio's features, check out this video:
+For a detailed walkthrough of my portfolio, check out this GIF:
 
-<video src="Full%20Walkthrough.mp4" controls width="800"></video>
+![Walkthrough GIF](Walkthrough.gif)
 
 ## 🛠️ Technologies Used
 
