@@ -54,12 +54,12 @@ window.onscroll = () => {
     }
 }
 
-// Project Filtering System (FIXED)
+// Project Filtering System
 function initProjectFiltering() {
     const filterButtons = document.querySelectorAll('.filter-item');
-    const posts = document.querySelectorAll('.post');
+    const projectContainers = document.querySelectorAll('.project-container');
 
-    if(filterButtons.length === 0 || posts.length === 0) return;
+    if(filterButtons.length === 0 || projectContainers.length === 0) return;
 
     filterButtons.forEach(button => {
         button.addEventListener('click', function(e) {
@@ -71,25 +71,35 @@ function initProjectFiltering() {
             // Add active class to clicked button
             this.classList.add('active');
 
-            // Filter projects
-            posts.forEach(post => {
+            // Filter project containers (not just posts)
+            projectContainers.forEach(container => {
+                const post = container.querySelector('.post');
+                
+                if (!post) return;
+
                 if (filter === 'all') {
+                    // Show all
+                    container.style.display = 'flex';
                     post.style.display = 'flex';
                     setTimeout(() => {
                         post.style.opacity = '1';
                         post.style.transform = 'scale(1)';
                     }, 10);
                 } else if (post.classList.contains(filter)) {
+                    // Show matching
+                    container.style.display = 'flex';
                     post.style.display = 'flex';
                     setTimeout(() => {
                         post.style.opacity = '1';
                         post.style.transform = 'scale(1)';
                     }, 10);
                 } else {
+                    // Hide non-matching
                     post.style.opacity = '0';
                     post.style.transform = 'scale(0.8)';
                     setTimeout(() => {
                         post.style.display = 'none';
+                        container.style.display = 'none'; // Hide container too
                     }, 300);
                 }
             });
